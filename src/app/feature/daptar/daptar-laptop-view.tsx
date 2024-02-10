@@ -19,7 +19,8 @@ export function DaptarLaptopView() {
           objectFit="cover"
           style={{
             width: "100vw",
-            height: "100vh",
+            minHeight: "100vh",
+            height: "100%",
             backdropFilter: "blur(10px)",
           }}
         />

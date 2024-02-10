@@ -34,16 +34,33 @@ export function DaptarForm() {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
+
       const res = await axios.post(`/api/daptar`, {
         username: username,
         email: email,
         password: password,
         photo: null,
       });
-      console.log({ res });
-      // router.push("/masuk");
+      if (res?.status === 201) {
+        setMessage("Pendaftaran akun berhasil");
+        setTypeMsg("success");
+
+        setTimeout(() => {
+          router.push("/masuk");
+        }, 3000);
+      }
+
+      if (res?.status === 500) {
+        setMessage("Pendaftaran akun gagal");
+        setTypeMsg("warning");
+      }
     } catch (error) {
       console.log(error);
+      setMessage("Internal Server Error");
+      setTypeMsg("error");
+    } finally {
+      setIsLoading(false);
     }
   };
 
