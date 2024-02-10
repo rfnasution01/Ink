@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Daptar() {
   return (
-    <article className="lg:bg-white shadow rounded-lg">
+    <article className="rounded-lg">
       <div className="hidden lg:block">
         <DaptarLaptopView />
       </div>

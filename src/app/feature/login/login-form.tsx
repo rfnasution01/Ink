@@ -30,27 +30,6 @@ export function LoginForm() {
 
   return (
     <div style={{ padding: "0px 40px" }}>
-      <div
-        style={{
-          marginBottom: "20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h5
-          style={{
-            fontWeight: 400,
-            fontSize: "14px",
-            color: "#64748b",
-            maxWidth: "60%",
-            textAlign: "center",
-          }}
-        >
-          Silakan masuk ke akun anda
-        </h5>
-      </div>
-
       {isLoading && <Loading />}
       {message && <Message message={message} type={typeMsg} />}
 

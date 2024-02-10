@@ -17,11 +17,10 @@ model User {
   updatedAt DateTime @updatedAt
   username String
   password String
+  email String
   photo String?
   status Status @relation(fields: [statusId], references: [id])
   statusId Int
-  token String
-  expired DateTime
   transactions Transaction[]
 }
 
