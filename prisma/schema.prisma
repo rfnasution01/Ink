@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean? 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username String
+  password String
+  photo String?
+  status Status @relation(fields: [statusId], references: [id])
+  statusId Int
+  token String
+  expired DateTime
+  transactions Transaction[]
+}
+
+model Transaction { 
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type Int  
+  title String
+  time DateTime
+  total String
+  description String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  asetFrom AsetFrom @relation(fields: [asetFromId],references: [id])
+  asetFromId Int
+  asetTo AsetTo @relation(fields: [asetToId],references: [id])
+  asetToId Int
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  transactions Transaction[]
+  subCategory SubCategory[]
+}
+
+model SubCategory {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+}
+
+model AsetFrom {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  total Int
+  transactions Transaction[]
+  assetGroup AsetGroup @relation(fields: [assetGroupId], references: [id])
+  assetGroupId Int 
+}
+
+model AsetTo {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  total Int
+  transactions Transaction[]
+  assetGroup AsetGroup @relation(fields: [assetGroupId], references: [id])
+  assetGroupId Int 
+}
+
+model AsetGroup {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  asetFrom AsetFrom[]
+  asetTo AsetTo[]
+}
+
+model Status {
+  id Int @id @default(autoincrement())
+  isDeleted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  icon String? 
+  user User[]
+}
