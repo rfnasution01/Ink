@@ -38,6 +38,7 @@ export function LupaPasswordForm() {
         }}
       >
         <h5
+          className="hidden lg:block"
           style={{
             fontWeight: 400,
             fontSize: "14px",

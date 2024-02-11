@@ -3,11 +3,8 @@ import Link from "next/link";
 export function LupaPasswordFooter() {
   return (
     <div
+      className="flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-between"
       style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
         padding: "0px 40px",
         marginBottom: "40px",
       }}

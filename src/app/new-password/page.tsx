@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NewPassword() {
   return (
-    <article className="lg:bg-white shadow rounded-lg lg:min-w-[30vw] lg:min-h-[80vh]">
+    <article className="bg-white shadow rounded-lg lg:min-w-[30vw] max-w-[70vw] lg:min-h-[80vh]">
       <div className="hidden lg:block">
         <NewPasswordLaptopView />
       </div>
