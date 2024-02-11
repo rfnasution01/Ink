@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-[#f0f4f7]">
         <div className="">
-          {session ? <MainLayout /> : <LoginLayout children={children} />}
+          {session ? <MainLayout /> : <LoginLayout>{children}</LoginLayout>}
         </div>
       </body>
     </html>
