@@ -1,7 +1,17 @@
 import { NextResponse } from "next/server";
 import { useSession } from "./app/utils";
 
-const protectedRoute = ["/", "/setting"];
+const protectedRoute = [
+  "/",
+  "/personal",
+  "/transaksi",
+  "/pengaturan",
+  "/pengaturan/sub-kategori",
+  "/pengaturan/kategori",
+  "/pengaturan/aset-grup",
+  "/pengaturan/aset",
+  "/pengaturan/status",
+];
 const publicRoute = ["/masuk", "/lupa-password", "/new-password", "/daptar"];
 
 export default function middleware(req: any) {
