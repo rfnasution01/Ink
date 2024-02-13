@@ -1,10 +1,14 @@
 "use client";
 
 import { Loading, Message } from "@/app/components";
+import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
+import Cookies from "js-cookie";
 
 export function LoginForm() {
+  const router = useRouter();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -17,13 +21,47 @@ export function LoginForm() {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const data = {
-      name: username,
-      password: password,
-      isChecked: isChecked,
-    };
-    console.log({ data });
-    // navigate.refresh();
+    try {
+      setIsLoading(true);
+
+      const res = await axios.post(`/api/masuk`, {
+        username: username,
+        password: password,
+      });
+
+      if (res?.status === 200) {
+        setMessage("Login akun berhasil");
+        setTypeMsg("success");
+        console.log(res);
+        const data = res?.data;
+        const token = data?.token;
+        const user = {
+          id: data?.user?.id,
+          username: data?.user?.username,
+          email: data?.user?.email,
+        };
+
+        console.log({ user });
+
+        Cookies.set("token", JSON.stringify(token));
+        Cookies.set("user", JSON.stringify(user));
+
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+      }
+
+      if (res?.status === 500) {
+        setMessage("Login gagal");
+        setTypeMsg("warning");
+      }
+    } catch (error) {
+      console.log(error);
+      setMessage("Username atau password salah");
+      setTypeMsg("error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const disabled = username === "" || password === "";

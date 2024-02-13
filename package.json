@@ -12,14 +12,20 @@
     "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "^5.9.1",
     "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.2",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.323.0",
     "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/js-cookie": "^3.0.6",
+    "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
