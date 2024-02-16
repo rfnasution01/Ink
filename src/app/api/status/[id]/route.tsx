@@ -4,18 +4,6 @@ import { Status } from "@prisma/client";
 import { NextApiRequest } from "next";
 const prisma = new PrismaClient();
 
-export const DELETE = async (
-  request: Request,
-  { params }: { params: { id: string } }
-) => {
-  const status: Status = await prisma.status.delete({
-    where: {
-      id: Number(params.id),
-    },
-  });
-  return NextResponse.json(status, { status: 200 });
-};
-
 export const PATCH = async (
   request: Request,
   { params }: { params: { id: string } }
@@ -35,7 +23,7 @@ export const PATCH = async (
 };
 
 export const GET = async (
-  req: NextApiRequest,
+  _request: Request,
   { params }: { params: { id: string } }
 ) => {
   try {

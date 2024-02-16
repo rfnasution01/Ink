@@ -24,6 +24,7 @@ export default function Edit() {
         setIsLoading(true);
         if (id) {
           const res = await axios.get(`/api/status/${id}`);
+
           if (res.data) {
             setData(res.data);
           }

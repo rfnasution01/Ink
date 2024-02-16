@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { Status } from "@prisma/client";
-import { NextApiRequest } from "next";
 const prisma = new PrismaClient();
 
 export const POST = async (request: Request) => {
@@ -29,7 +28,7 @@ export const POST = async (request: Request) => {
   }
 };
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: Request) => {
   try {
     const url = new URL(req.url || "");
     const paramsId = url.searchParams.get("id");
