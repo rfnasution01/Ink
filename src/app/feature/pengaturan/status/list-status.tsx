@@ -16,24 +16,25 @@ export function ListStatus() {
   const user = userCookies && JSON.parse(userCookies);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getStatus = async () => {
-      try {
-        setIsLoading(true);
-        if (user?.id) {
-          const res = await axios.get("/api/status", {
-            params: { id: user.id },
-          });
-          if (res.data) {
-            setDataStatus(res.data);
-          }
+  const getStatus = async () => {
+    try {
+      setIsLoading(true);
+      if (user?.id) {
+        const res = await axios.get("/api/status", {
+          params: { id: user.id },
+        });
+        if (res.data) {
+          setDataStatus(res.data);
         }
-      } catch (error) {
-        console.error("Error fetching status:", error);
-      } finally {
-        setIsLoading(false);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching status:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     getStatus();
   }, []);
 
@@ -44,8 +45,8 @@ export function ListStatus() {
         isDeleted: true,
       });
       if (res) {
-        console.log(res);
-        navigate.refresh();
+        // navigate.refresh();
+        getStatus();
       }
     } catch (error) {
       console.log(error);

@@ -26,7 +26,7 @@ export const PATCH = async (
       id: Number(params.id),
     },
     data: {
-      isDeleted: false,
+      isDeleted: body.isDeleted,
       name: body.name,
       icon: body.icon,
     },

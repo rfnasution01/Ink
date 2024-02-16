@@ -47,6 +47,7 @@ export function FormStatus({
         ? await axios.patch(`/api/status/${id}`, {
             name: name,
             icon: null,
+            isDeleted: false,
           })
         : await axios.post(`/api/status`, {
             name: name,
@@ -143,7 +144,7 @@ export function FormStatus({
         )}
       </div>
       {/* Input file untuk memilih foto */}
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col mb-8">
         <label
           style={{ fontWeight: 400, fontSize: "16px", marginBottom: "8px" }}
         >
