@@ -41,8 +41,6 @@ export function LoginForm() {
           email: data?.user?.email,
         };
 
-        console.log({ user });
-
         Cookies.set("token", JSON.stringify(token));
         Cookies.set("user", JSON.stringify(user));
 

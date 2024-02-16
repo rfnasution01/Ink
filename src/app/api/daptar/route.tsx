@@ -16,7 +16,6 @@ export const POST = async (request: Request) => {
         email: body.email,
         password: hashedPassword,
         photo: body.photo,
-        status: { connect: { id: 1 } },
       },
     });
     return NextResponse.json(user, { status: 201 });
