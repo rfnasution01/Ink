@@ -1,27 +1,21 @@
-import { NextResponse } from "next/server";
-import { useSession } from "./app/utils";
+import { NextRequest, NextResponse } from "next/server";
 
-const protectedRoute = [
-  "/",
-  "/personal",
-  "/transaksi",
-  "/pengaturan",
-  "/pengaturan/sub-kategori",
-  "/pengaturan/kategori",
-  "/pengaturan/aset-grup",
-  "/pengaturan/aset",
-  "/pengaturan/status",
-];
 const publicRoute = ["/masuk", "/lupa-password", "/new-password", "/daptar"];
 
-export default function middleware(req: any) {
-  if (!useSession && protectedRoute.includes(req.nextUrl.pathname)) {
-    const absoluteUrl = new URL("/masuk", req.nextUrl.origin);
+export default function middleware(request: NextRequest) {
+  const useSession = request.cookies.get("token")?.value;
+
+  if (!useSession && !publicRoute.includes(request.nextUrl.pathname)) {
+    const absoluteUrl = new URL("/masuk", request.nextUrl.origin);
     return NextResponse.redirect(absoluteUrl.toString());
   }
 
-  if (useSession && publicRoute.includes(req.nextUrl.pathname)) {
-    const absoluteUrl = new URL("/", req.nextUrl.origin);
+  if (useSession && publicRoute.includes(request.nextUrl.pathname)) {
+    const absoluteUrl = new URL("/", request.nextUrl.origin);
     return NextResponse.redirect(absoluteUrl.toString());
   }
 }
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+};

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { NewPasswordLaptopView, NewPasswordMobileView } from "../feature";
+import { NewPasswordLaptopView, NewPasswordMobileView } from "../../feature";
 
 export const metadata: Metadata = {
   title: "Ink - New Password",

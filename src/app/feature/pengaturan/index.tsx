@@ -4,3 +4,4 @@ export * from "./pengaturan-menu-list";
 export * from "./status";
 export * from "./aset";
 export * from "./kategori";
+export * from "./sub-kategori";

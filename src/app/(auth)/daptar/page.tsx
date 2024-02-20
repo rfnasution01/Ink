@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { DaptarLaptopView, DaptarMobileView } from "../feature/daptar";
+import { DaptarLaptopView, DaptarMobileView } from "../../feature/daptar";
 
 export const metadata: Metadata = {
   title: "Ink - Daptar",

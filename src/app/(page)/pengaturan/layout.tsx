@@ -1,8 +1,5 @@
+import { PengaturanLaptopView, PengaturanMobileView } from "@/app/feature";
 import type { Metadata } from "next";
-import {
-  PengaturanLaptopView,
-  PengaturanMobileView,
-} from "../feature/pengaturan";
 
 export const metadata: Metadata = {
   title: "Pengaturan",

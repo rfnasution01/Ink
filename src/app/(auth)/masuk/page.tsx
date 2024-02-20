@@ -1,20 +1,20 @@
 import { Metadata } from "next";
-import { LupaPasswordLaptopView, LupaPasswordMobileView } from "../feature";
+import { LoginLaptopView, LoginMobileView } from "../../feature";
 
 export const metadata: Metadata = {
-  title: "Ink - Lupa Password",
+  title: "Ink - Login",
   description:
     "Pantau dan kelola keuangan Anda dengan mudah bersama Ink, solusi terpercaya untuk pencatatan keuangan yang efisien.",
 };
 
-export default function LupaPassword() {
+export default function Masuk() {
   return (
-    <article className="bg-white shadow rounded-lg lg:min-w-[30vw] max-w-[70vw] lg:min-h-[80vh]">
+    <article className="bg-white shadow rounded-lg lg:min-w-[30vw] lg:min-h-[80vh]">
       <div className="hidden lg:block">
-        <LupaPasswordLaptopView />
+        <LoginLaptopView />
       </div>
       <div className="block lg:hidden">
-        <LupaPasswordMobileView />
+        <LoginMobileView />
       </div>
     </article>
   );

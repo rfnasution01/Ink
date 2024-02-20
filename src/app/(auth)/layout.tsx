@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { LoginLayout, MainLayout } from "./layouts";
-import { usePathname } from "next/navigation";
-
 export const metadata: Metadata = {
   title: "Ink",
   description:
     "Pantau dan kelola keuangan Anda dengan mudah bersama Ink, solusi terpercaya untuk pencatatan keuangan yang efisien.",
 };
 
-export default function RootLayout({
+export default function LoginLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -17,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#f0f4f7]">
-        <MainLayout>{children}</MainLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
