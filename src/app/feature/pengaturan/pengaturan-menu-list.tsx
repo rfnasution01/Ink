@@ -14,7 +14,8 @@ export function PengaturanMenuList() {
         <Link
           href={item?.url}
           className={`flex items-center justify-center gap-2 p-4 ${
-            desiredRoute === item?.url
+            desiredRoute === item?.url ||
+            (pathName === item?.url && item?.name === "Pengaturan")
               ? "bg-[#F2F8FF] text-[#1094DD] border-b-2 border-[#1094DD]"
               : "border-[transparent]"
           } hover:bg-[#F2F8FF] hover:text-[#1094DD] border-b-2 hover:border-[#1094DD] transition duration-300 ease-in-out`}
